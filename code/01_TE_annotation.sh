@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --time=15:00:00
+#SBATCH --time=4-00:00
 #SBATCH --mem=64g
 #SBATCH --cpus-per-task=20
 #SBATCH --job-name=TE_Annotation
