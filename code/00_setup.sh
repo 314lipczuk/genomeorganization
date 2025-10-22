@@ -5,6 +5,7 @@ export DATADIR="$BASEDIR/data"
 export LOGDIR="$BASEDIR/logs"
 export RESULTDIR="$BASEDIR/results"
 export ASSEMBLY_PATH="/data/users/ppilipczuk/GenomeAndTransAss/results/hifiasm/assembly_primary_contig.fa"
+export TRANSCRIPTOME_PATH="/data/users/ppilipczuk/GenomeAndTransAss/results/Trinity.Trinity.fasta"
 echo "sourced config.sh"
 
 mkdir -p "$LOGDIR"

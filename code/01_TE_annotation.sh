@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=4-00:00
-#SBATCH --mem=64g
-#SBATCH --cpus-per-task=20
+#SBATCH --mem=250G
+#SBATCH --cpus-per-task=28
 #SBATCH --job-name=TE_Annotation
 #SBATCH --partition=pibu_el8
 #SBATCH --mail-user=przemyslaw.pilipczuk@students.unibe.ch
@@ -21,4 +21,4 @@ apptainer exec \
   --sensitive 1 \
   --cds "$BASEDIR/data/TAIR10_cds_20110103_representative_gene_model_updated" \
   --anno 1 \
-  --threads 20
+  --threads 28
