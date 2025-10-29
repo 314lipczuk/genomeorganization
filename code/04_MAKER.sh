@@ -12,16 +12,17 @@ ANNOTATION_DIR="$RESULTDIR/ANNOTATION"
 # TODO: change this after my EDTA runs
 EDTA_RES_PATH="/data/courses/assembly-annotation-course/CDS_annotation/example_EDTA_data/edta_annotation"
 genome="assembly"
-
-mkdir -p $OrganizationAndAnnotationOfEkuaryoticGenomes
-cd $ANNOTATION_DIR
+set -e
+mkdir -p "$ANNOTATION_DIR"
+cd "$ANNOTATION_DIR"
+pwd
 
 apptainer exec --bind / \
   /data/courses/assembly-annotation-course/CDS_annotation/containers/MAKER_3.01.03.sif \
   maker -CTL
 
-FILE="maker_opts.ctl"
-cat > $FILE <<- EOM
+FILE="$ANNOTATION_DIR/maker_opts.ctl"
+cat > "$FILE" <<- EOM
 #-----Genome (these are always required)
 genome=$ASSEMBLY_PATH
 #genome sequence (fasta file or fasta embeded in GFF3 file)
@@ -30,7 +31,6 @@ est=$TRANSCRIPTOME_PATH
 #set of ESTs or assembled mRNA-seq in fasta format. Use this for evidence based gene prediction
 #-----Protein Homology Evidence (for best results provide a file for at least one)
 protein=/data/courses/assembly-annotation-course/CDS_annotation/data/TAIR10.fa,/data/courses/assembly-annotation-course/CDS_annotation/data/uniprot/uniprot_viridiplantae_reviewed.fa
-/data/courses/assembly-annotation-course/CDS_annotation/data/TAIR10.fa
 #protein sequence file in fasta format (i.e. from mutiple organisms). Use this for evidence based gene prediction
 #-----Repeat Masking (leave values blank to skip repeat masking)
 model_org=

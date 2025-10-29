@@ -11,11 +11,12 @@
 ANNOTATION_DIR="$RESULTDIR/ANNOTATION"
 
 # TODO: change this after my EDTA runs
-EDTA_RES_PATH="/data/courses/assembly-annotation-course/CDS_annotation/example_EDTA_data/edta_annotation"
-genome="assembly"
+#EDTA_RES_PATH="/data/courses/assembly-annotation-course/CDS_annotation/example_EDTA_data/edta_annotation"
 
-mkdir -p $ANNOTATION_DIR
-cd $ANNOTATION_DIR
+set -e
+
+mkdir -p "$ANNOTATION_DIR"
+cd "$ANNOTATION_DIR"
 
 COURSEDIR="/data/courses/assembly-annotation-course/CDS_annotation"
 
@@ -26,5 +27,5 @@ module load AUGUSTUS/3.4.0-foss-2021a
 mpiexec --oversubscribe -n 50 apptainer exec \
   --bind / \
   ${COURSEDIR}/containers/MAKER_3.01.03.sif \
-  maker -mpi --ignore_nfs_tmp -TMP $SCRATCH maker_opts.ctl maker_bopts.ctl \
+  maker -mpi --ignore_nfs_tmp -TMP "$SCRATCH" maker_opts.ctl maker_bopts.ctl \
   maker_evm.ctl maker_exe.ctl
