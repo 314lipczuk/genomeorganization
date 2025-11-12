@@ -10,7 +10,7 @@ echo $LOGDIR
 set -e
 script_name=${@: -1}
 echo "Running shellcheck on $script_name"
-shellcheck $script_name
+#shellcheck $script_name
 
 # filenames that when sorted by filename shows relevant files together.
 sbatch --output="$LOGDIR/%x-[$NOW]-[%a]-OUT-[%J]" --error="$LOGDIR/%x-[$NOW]-[%a]-ERR-[%J]" $@

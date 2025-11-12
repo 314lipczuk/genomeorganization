@@ -25,7 +25,8 @@ module load OpenMPI/4.1.1-GCC-10.3.0
 module load AUGUSTUS/3.4.0-foss-2021a
 
 mpiexec --oversubscribe -n 50 apptainer exec \
-  --bind / \
+  --bind /data \
+  --bind "$ANNOTATION_DIR":"$ANNOTATION_DIR" \
   ${COURSEDIR}/containers/MAKER_3.01.03.sif \
   maker -mpi --ignore_nfs_tmp -TMP "$SCRATCH" maker_opts.ctl maker_bopts.ctl \
   maker_evm.ctl maker_exe.ctl

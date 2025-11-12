@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --time=7-00
-#SBATCH --mem=64g
-#SBATCH --cpus-per-task=20
+#SBATCH --mem=6g
+#SBATCH --cpus-per-task=2
 #SBATCH --job-name=MAKER_prep
 #SBATCH --partition=pibu_el8
 #SBATCH --mail-user=przemyslaw.pilipczuk@students.unibe.ch
@@ -17,7 +17,8 @@ mkdir -p "$ANNOTATION_DIR"
 cd "$ANNOTATION_DIR"
 pwd
 
-apptainer exec --bind / \
+apptainer exec --bind /data \
+  --bind "$ANNOTATION_DIR":"$ANNOTATION_DIR" \
   /data/courses/assembly-annotation-course/CDS_annotation/containers/MAKER_3.01.03.sif \
   maker -CTL
 
