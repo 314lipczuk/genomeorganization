@@ -12,6 +12,7 @@ set -euo pipefail
 # ---------------------------------------------------------
 # Environment & paths
 # ---------------------------------------------------------
+
 cd "$RESULTDIR/GFF/final"
 ACCESSION="Mh-0"  
 GENESPACE_DIR="$RESULTDIR/GENESPACE"
