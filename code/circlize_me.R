@@ -95,6 +95,10 @@ fai_file <- paste0(assembly_fasta, ".fai")
 output_dir <- "/data/users/ppilipczuk/OrganizationAndAnnotationOfEkuaryoticGenomes/results/plots"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
+
+gff_annotation <- "/data/users/ppilipczuk/OrganizationAndAnnotationOfEkuaryoticGenomes/results/GFF/final/filtered.genes.renamed.gff3"
+annotation_data <- read.table(gff_annotation, header = FALSE, sep = "\t", stringsAsFactors = FALSE)
+
 # -------------------------------------------------------------
 # Generate .fai index if it doesn't exist
 # -------------------------------------------------------------
@@ -170,6 +174,7 @@ circos.genomicInitialize(custom_ideogram)
 message("Drawing genomic density tracks...")
 
 te_colors <- c(
+  "gene"="black",
   "Gypsy_LTR_retrotransposon" = "darkgreen",
   "Copia_LTR_retrotransposon" = "darkred",
   "tRNA_SINE_retrotransposon" = "darkblue",
@@ -177,6 +182,7 @@ te_colors <- c(
   "Mutator_TIR_transposon" = "orange"
 )
 
+circos.genomicDensity(filter_superfamily(annotation_data, "gene", custom_ideogram), count_by = "number", col = "black", track.height = 0.07, window.size = 1e5)
 for (sf in names(te_colors)) {
   df <- filter_superfamily(gff_data, sf, custom_ideogram)
   if (nrow(df) > 0) {
