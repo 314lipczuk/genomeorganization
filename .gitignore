@@ -1,3 +1,9 @@
 results
 data
 logs
+02-full_length_LTRs_identity.R
+ids_bed.txt
+ids_fa.txt
+parseRM.pl
+Rplots.pdf
+slurm.py
