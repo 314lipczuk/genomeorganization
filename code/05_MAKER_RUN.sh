@@ -10,9 +10,6 @@
 
 ANNOTATION_DIR="$RESULTDIR/ANNOTATION"
 
-# TODO: change this after my EDTA runs
-#EDTA_RES_PATH="/data/courses/assembly-annotation-course/CDS_annotation/example_EDTA_data/edta_annotation"
-
 set -e
 
 mkdir -p "$ANNOTATION_DIR"
